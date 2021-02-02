@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+
+
+<body>
+
+    <p>Gæt tal mellem 1-20</p>
+    <input type="text" id="get">
+    <button>Gæt</button>
+    <button id="nyt_spil">Nyt spil</button>
+
+    <p id="demo"></p>
+
+
+    <script>
+        const tilfaeldigtTal = Math.round(Math.random() * 20);
+        let antalGæt = 0;
+        document.querySelector("button").addEventListener("click", guessTal);
+
+
+        function guessTal() {
+            antalGæt++;
+            const guess = document.querySelector("#get").value;
+            console.log("tilfaeldigtTal", tilfaeldigtTal);
+            console.log("brugergæt", guess);
+            if (guess == tilfaeldigtTal) {
+                console.log(`Rigtigt! Du har gættet ${antalGæt} gange`);
+            } else if (guess < tilfaeldigtTal) {
+                console.log(`For lavt, desværre. Du har gættet  ${antalGæt} gange`)
+            } else {
+                console.log(`For højt, desværre. Du har gættet  ${antalGæt} gange`)
+            }
+        }
+
+
+
+
+        //        document.querySelector("button").addEventListener("click", buttonClick);
+        //
+        // let random = (Math.round(Math.random() * 20) + 1);
+        // console.log(random)
+        //
+        // function buttonClick() {
+        // let tal = document.querySelector("#tal").value;
+        //
+        // let resultat;
+        // if (tal == random) {
+        // resultat = `Tillykke du har gættet korrekt.`;
+        // } else if (tal < random) { // resultat=`Desværre du har gættet for lavt, prøv igen.`; // } else { // resultat=`Desværre du har gættet for højt< prøv igen.`; // } // document.getElementById("demo").innerHTML=resultat; // // console.log(resultat) // // }
+
+    </script>
+
+</body>
+
+</html>
