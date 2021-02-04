@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+   <article id="input">
+
+   </article>
+
+
+
+
+    <script>
+
+    document.addEventListener("DOMContentLoaded", start);
+        console.log("Siden er loaded");
+
+        function start(){
+
+    let dyr ={"navn":"gris", "type": "pattedyr", "billede":"http://mabe-kea.dk/E19/pics/pig.png","levested":"svinefarme" };
+       console.log(`Dyr:${dyr.navn}, Type:${dyr.type}, Levested:${dyr.levested}`);
+
+
+
+//            const destination = document.querySelector("#input");
+            const fuldeNavnDyr = `Dyr:${dyr.navn} Type:${dyr.type} ${dyr.billede} Levested:${dyr.levested}`;
+
+            document.querySelector("#input").textContent = fuldeNavnDyr;
+        }
+
+    </script>
+
+</body>
+
+
+
+
+</html>
