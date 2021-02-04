@@ -152,13 +152,13 @@
 
         // HERUNDER SKAL JEG LAVE EN OPGAVE HVOR AT NÅR MAN KLIKKER PÅ DET FØRSTE BILLEDE, SKAL BILLEDET SKIFTE:
 
-//        pic1.addEventListener("click", skiftBillede);
-//
-//        function skiftBillede() {
-//            randomTal = Math.round(Math.random() * 10);
-//            let newPic1 = document.querySelector("article:first-child img");
-//            newPic1.src = "https://placeimg.com/400/300/nature" + randomTal;
-//        }
+        pic1.addEventListener("click", skiftBillede);
+
+        function skiftBillede() {
+            randomTal = Math.round(Math.random() * 10);
+            let newPic1 = document.querySelector("article:first-child img");
+            newPic1.src = "https://placeimg.com/800/500/nature" + randomTal;
+        }
 
 
 
@@ -191,7 +191,7 @@
 
          function boxShadowGone () {
             console.log("BoxshadowAf");
-            lilartikel.style.boxShadow = "none";
+            this.style.boxShadow = "none";
         }
 
 
