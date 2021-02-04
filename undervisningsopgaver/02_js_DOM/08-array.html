@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+   <H1>PLAYLISTE</H1>
+
+<ul id="display"></ul>
+
+
+<script>
+
+
+
+    // HER LAVER JEG EN KONSTANT VARIABEL I ET ARRAY MED FORSKELLIGE NUMRE.
+    const playliste = ["Just the two of us", "Dr.Rhytm","Sex machine","Slanderous","Maceo Plex", "Trigger","Land of confusion","Iron Maiden", "Funkin' for Jamaica","Lemonade"];
+
+    // HER LAVER JEG EN FUNKTION, FUNKTIONEN LOOPER OG UDFØRES FOR HVERT ELEMENT ELLER "NUMMER" INDE I ".."
+
+
+    playliste.forEach(nummer =>display.innerHTML += "<li>" + nummer + "</li>");
+
+    // FUNKTIONEN PEGER OPPE PÅ LISTEN I HTML'EN MED ID'ET = "DISPLAY" - HEREFTER VED HJÆLP AF INNERHTML, TILFØJER VI PUNKTER (=+) TIL LISTEN (<li> ... </li>)
+    // VED AT REFERERE TIL "+ nummer +" SÆTTER VI DE ENKELTE ELEMENTER/NUMRE FRA VORES ARRAY IND I LISTEN.
+
+
+
+
+
+
+
+
+    </script>
+
+
+    </body>
+</html>
