@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Persongalleri</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: rgb(129, 234, 115);
+            background: radial-gradient(circle, rgb(239, 169, 185) 0%, rgb(216, 242, 147) 100%);
+            font-family: 'Roboto', sans-serif;
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+
+        p {
+            font-style: italic;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+
+        img {
+            width: 100%;
+        }
+
+        article {
+            padding: 20px;
+            margin: 20px;
+            border: 2px dotted rgba(125, 156, 226, 0.74);
+            background-color: #b6b6e5;
+            border-radius: 15px;
+
+            box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+
+            transition: 0.5s;
+        }
+
+        article:hover {
+            transform: scale(1.05);
+            background: rgba(240, 46, 170, 0.15);
+            transition: 0.5s;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            transform: skewX(40deg);
+            font-size: 3.5em;
+        }
+
+        h2 {
+            color: #080808;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Persongalleri</h1>
+    <main></main>
+
+    <template>
+        <article>
+            <img src="" alt="" class="billede">
+            <h2 class="navn"></h2>
+            <p class="titel"></p>
+            <p class="fødselsdag"></p>
+        </article>
+    </template>
+
+    <script>
+        const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+
+        const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
+
+        const options = {
+            headers: {
+                'x-apikey': "600fe9211346a1524ff12e31"
+            }
+        };
+
+        async function hentData() {
+            const resspons = await fetch(url, options);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+        const main = document.querySelector("main");
+        const template = document.querySelector("template").content;
+
+        function vis(json) {
+            console.log(json);
+            json.forEach(person => {
+                const klon = template.cloneNode(true);
+                klon.querySelector(".billede").src = medieurl + person.billede;
+                klon.querySelector(".navn").textContent = person.fornavn;
+                klon.querySelector(".navn").innerHTML += ` ${person.efternavn}`;
+                klon.querySelector(".titel").textContent = person.titel;
+                klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+                main.appendChild(klon);
+            })
+        }
+
+        hentData();
+    </script>
+</body></html>
