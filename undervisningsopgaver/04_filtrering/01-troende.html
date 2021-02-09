@@ -42,12 +42,7 @@
 
 <body>
 
-    <nav>
-    <button data-troende="alle" class="valgt">Alle</button>
-    <button data-troende="ja">Troende</button>
-    <button data-troende="nej">Ikke troende</button>
-    <button data-troende="tvivler">Tvivler</button>
-    </nav>
+
 
     <section id="liste"></section>
 
@@ -69,21 +64,13 @@
         }
         document.addEventListener("DOMContentLoaded", start)
         let personer;
-        let filter = "alle";
+        let filter = "ja";
 
         // første funktion der kaldes efter DOM er loaded
         function start() {
-            const filterKnapper = document.querySelectorAll("nav button");
-            filterKnapper.forEach(knap => knap.addEventListener("click",filtrerPersoner));
             loadJSON();
         }
 
-        //eventlistener knyttet til knapper der vælger hvad for et filter der er aktivt
-        function filtrerPersoner (){
-            filter = this.dataset.troende; // sæt variabel "filter" til værdien af data-troende på den knap der er klikket på.
-
-            visPersoner(); // kald funktionen visPersoner efter det nye filter er sat
-        }
 
         async function loadJSON() {
             const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
@@ -98,12 +85,11 @@
         function visPersoner() {
             const dest = document.querySelector("#liste"); // container til articles med en person
             const skabelon = document.querySelector("template").content; // select indhold af html skabelon (article)
-            dest.textContent = ""; // ryd container inden ny loop
             personer.forEach(person => {
                 console.log("Troende", person.troende);
                 // loop igennem json (personer)
                 // tjek hvilken tro personen har og sammenlign med aktuelt filter eller vis alle, hvis filter har værdien "alle.
-                if (filter == person.troende || filter == "alle") {
+                if (filter == person.troende) {
                 const klon = skabelon.cloneNode(true);
                 klon.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
                 klon.querySelector(".profil-billede").src = medieurl + person.billede;
